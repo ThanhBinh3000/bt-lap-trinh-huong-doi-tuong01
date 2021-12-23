@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp chuyển đổi nhiệt độ</title>
+</head>
+<body>
+<script>
+    class Temperature {
+        C;
+        F;
+        K;
+        constructor(C,F,K) {
+            this.C=C;
+            this.F=F;
+            this.K=K;
+        }
+        getDof(){
+            return (9/5 * this.C +32);
+        }
+        getDok(){
+            return (this.C + 273.15);
+        }
+    }
+    let calculator = new Temperature(25);
+    //c1 khai báo
+    // let C = calculator.getDoc()
+    // let F = calculator.getDof();
+    // let K = calculator.getDok();
+    //document.write(F +"°F   và   "+ K +  " °K  ");
+
+
+    //c2
+    document.write(calculator.getDof() +"°F   và   "+ calculator.getDok() +  " °K  ");
+</script>
+
+</body>
+</html>

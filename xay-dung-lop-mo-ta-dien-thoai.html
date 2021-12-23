@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả điện thoại</title>
+</head>
+<body>
+<script>
+    class Mobile {
+        _battery;
+        _draft;
+        _inbox;
+        _sent;
+        _status;
+        constructor(battery,draft,inbox,sent,status) {
+            this._battery=battery;
+            this._draft=draft;
+            this._inbox=inbox;
+            this._sent=sent;
+            this._status=status;
+        }
+        get battery(){
+            return this._battery;
+        }
+        set battery(value){
+            this._battery = value;
+        }
+        get draft(){
+            return this._draft;
+        }
+        set draft(value){
+            this._draft = value;
+        }
+        get inbox(){
+            return this._inbox
+        }
+        set inbox(value){
+            this._inbox = value;
+        }
+        get sent(){
+            return this._sent
+        }
+        set sent(value){
+            this._sent = value;
+        }
+        get status(){
+            return this._status
+        }
+        set status(value){
+            this._sent = value;
+        }
+        checkStatus(){
+            return this._status;
+        }
+        switch(){
+            // bật tắt điện thoại
+            // nếu như đt đang bật => status = true => khi gọi phương thức nó sẽ gán status = !=true = false
+            // nếu như đt đang tắt => status = false => khi gọi phương thức nó sẽ gán status = !=false = true
+            this._status = !this._status;
+        }
+
+        chargeBattery(){
+            this._battery++;
+        }
+
+        createMessage(content){
+            this._draft.push(content);
+        }
+
+        receiveMessahe(content, mobile){
+            this._inbox.push(content);
+            mobile.sent.push(content);
+        }
+
+        sentMessage(content, mobile) {
+            this._sent.push(content);
+            mobile.inbox.push(content);
+        }
+
+    }
+    let mobileBinhAn = new Mobile(1,[],[],[],true);
+    let mobileminh = new Mobile(99,[],[],[],true);
+    if (mobileBinhAn.checkStatus() === true) {
+        alert("điện thoại đang bật")
+    }
+    mobileBinhAn.chargeBattery();
+    alert("Pin điện thoại của Bình An: "+mobileBinhAn.battery)
+    mobileBinhAn.createMessage("Hello Bình An");
+    mobileBinhAn.receiveMessage("Hello Bình An", mobileminh);
+    mobileminh.sentMessage("Hello hi", mobileBinhAn);
+</script>
+</body>
+</html>
